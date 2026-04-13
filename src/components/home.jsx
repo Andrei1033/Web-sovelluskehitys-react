@@ -1,4 +1,5 @@
 import MediaRow from "./MediaRow";
+import { useState } from "react";
 
 const Home = () => {
     const mediaArray = [
@@ -35,9 +36,24 @@ const Home = () => {
             created_at: '2024-01-07T20:48:13.000Z',
         },
     ]
+
+    const [search, setSearch] = useState('');
+    const [count, setCount] = useState(0);
+    const filteredMedia = mediaArray.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <>
             <h2>My Media</h2>
+
+            <input type="text" placeholder="Search media..." value={search} onChange={(e) => setSearch(e.target.value)}></input>
+
+            <p>Clicks: {count}</p>
+
+            <button onClick={() => setCount(count + 1)}>
+                Click me
+            </button>
 
             <table>
                 <thead>
@@ -52,7 +68,7 @@ const Home = () => {
                 </thead>
 
                 <tbody>
-                {mediaArray.map((item) => (
+                {filteredMedia.map((item) => (
                     <MediaRow key={item.media_id} item={item}/>
                 ))}
                 </tbody>
