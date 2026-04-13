@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const MediaRow = (props) => {
-    const {item} = props;
+    const { item, setSelectedItem } = props;
 
     return(
         <tr>
@@ -11,6 +11,9 @@ const MediaRow = (props) => {
             <td>{item.title}</td>
             <td>{item.description}</td>
             <td>
+                <button onClick={() => setSelectedItem(item)}>View</button>
+            </td>
+            <td>
                 {new Date(item.created_at).toLocaleString('fi-FI')}
             </td>
             <td>{item.filesize}</td>
@@ -19,8 +22,9 @@ const MediaRow = (props) => {
     )
 }
 
-MediaRow.PropTypes = {
+MediaRow.propTypes = {
     item: PropTypes.object.isRequired,
+    setSelectedItem: PropTypes.func.isRequired,
 }
 
 export default MediaRow;

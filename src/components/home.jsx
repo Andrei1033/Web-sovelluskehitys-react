@@ -1,5 +1,6 @@
 import MediaRow from "./MediaRow";
 import { useState } from "react";
+import SingleView from "./SingleView";
 
 const Home = () => {
     const mediaArray = [
@@ -42,6 +43,7 @@ const Home = () => {
     const filteredMedia = mediaArray.filter((item) =>
         item.title.toLowerCase().includes(search.toLowerCase())
     );
+    const[selectedItem, setSelectedItem] = useState(null);
 
     return (
         <>
@@ -61,6 +63,7 @@ const Home = () => {
                     <th>Thumbnail</th>
                     <th>Title</th>
                     <th>Description</th>
+                    <th></th>
                     <th>Created</th>
                     <th>Size</th>
                     <th>Type</th>
@@ -69,10 +72,15 @@ const Home = () => {
 
                 <tbody>
                 {filteredMedia.map((item) => (
-                    <MediaRow key={item.media_id} item={item}/>
+                    <MediaRow key={item.media_id} item={item} setSelectedItem={setSelectedItem}/>
                 ))}
                 </tbody>
             </table>
+
+            <SingleView
+                item={selectedItem}
+                setSelectedItem={setSelectedItem}
+            />
         </>
     );
 };
