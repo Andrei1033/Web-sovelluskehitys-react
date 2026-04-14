@@ -1,4 +1,4 @@
-Open [routing app]([https://users.metropolia.fi/~andreits/wsk-routing/](https://users.metropolia.fi/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_routing/)) to view it in the browser.
+Open [routing app](https://users.metropolia.fi/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_routing/)
 
 # React + Vite
 
