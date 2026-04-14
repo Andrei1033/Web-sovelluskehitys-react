@@ -7,5 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
+    
   ],
+  base: '/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_routing/',
 })

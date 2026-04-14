@@ -1,11 +1,24 @@
 import './App.css';
 import Home from '../src/components/home.jsx';
+import { BrowserRouter, Route, Routes } from 'react-router'
+import Layout from './components/Lajout.jsx';
+import Profile from './views/Profile.jsx';
+import Upload from './views/Upload.jsx';
+import Single from './views/Single.jsx';
 
 const App = () => {
   return (
     <>
-      <h1>My Appp</h1>
-      <Home />
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <Routes>
+          <Route element={<Layout/>}>
+            <Route path='/' element={<Home />}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/upload' element={<Upload/>}/>
+            <Route path='single' element={<Single/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
