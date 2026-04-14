@@ -27,8 +27,8 @@ const Home = () => {
         {
             media_id: 17,
             user_id: 2,
-            filename: 'https://placehold.co/1200x800',
-            thumbnail: 'https://placehold.co/320x240',
+            filename: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWSr0OfFPxOcTqm5pjU_3wySt04sHbcREbOg&s',
+            thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWSr0OfFPxOcTqm5pjU_3wySt04sHbcREbOg&s',
             filesize: 1236616,
             media_type: 'video/mp4',
             title: 'Bunny',
