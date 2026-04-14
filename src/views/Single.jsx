@@ -18,6 +18,7 @@ const Single = () => {
 
             <img src={item.filename} alt={item.title} width="400"/>
 
+            <p>Owner: {item.username}</p>
             <p>{item.description}</p>
             <p>{item.media_type}</p>
             <p>{item.filesize}</p>
