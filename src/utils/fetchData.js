@@ -1,7 +1,12 @@
-const fetchData = async (url) => {
-    const response = await fetch(url);
-    const json = await response.json();
-    return json;
+const fetchData = async (url, options = {}) => {
+  const response = await fetch(url, options);
+
+  if (!response.ok) {
+    throw new Error("Request failed");
+  }
+
+  const json = await response.json();
+  return json;
 };
 
 export default fetchData;

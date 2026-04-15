@@ -3,50 +3,52 @@ import { useState } from "react";
 import { useMedia } from "../hooks/apiHooks";
 
 const Home = () => {
-    const { mediaArray } = useMedia();
-    const [search, setSearch] = useState('');
-    const [count, setCount] = useState(0);
-    
-    const filteredMedia = mediaArray.filter((item) =>
-        item.title.toLowerCase().includes(search.toLowerCase())
-    );
+  const { mediaArray } = useMedia();
+  const [search, setSearch] = useState("");
+  const [count, setCount] = useState(0);
 
-    return (
-        <>
-            <h1>My app</h1>
-            <h2>My Media</h2>
+  const filteredMedia = mediaArray.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
-            <input type="text" placeholder="Search media..." value={search} onChange={(e) => setSearch(e.target.value)}></input>
+  return (
+    <>
+      <h1>My app</h1>
+      <h2>My Media</h2>
 
-            <p>Clicks: {count}</p>
+      <input
+        type="text"
+        placeholder="Search media..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      ></input>
 
-            <button onClick={() => setCount(count + 1)}>
-                Click me
-            </button>
+      <p>Clicks: {count}</p>
 
-            <table>
-                <thead>
-                <tr>
-                    <th>Thumbnail</th>
-                    <th>User</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th></th>
-                    <th>Created</th>
-                    <th>Size</th>
-                    <th>Type</th>
-                </tr>
-                </thead>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
 
-                <tbody>
-                {filteredMedia.map((item) => (
-                    <MediaRow key={item.media_id} item={item}/>
-                ))}
-                </tbody>
-            </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Thumbnail</th>
+            <th>User</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+            <th>Created</th>
+            <th>Size</th>
+            <th>Type</th>
+          </tr>
+        </thead>
 
-        </>
-    );
+        <tbody>
+          {filteredMedia.map((item) => (
+            <MediaRow key={item.media_id} item={item} />
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 };
 
 export default Home;
