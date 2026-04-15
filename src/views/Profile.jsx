@@ -2,32 +2,47 @@ import { useEffect, useState } from "react";
 import { useUser } from "../hooks/apiHooks";
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+  const { getUserByToken } = useUser();
 
-    const { getUserByToken } = useUser();
-    const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUser = async () => {
+      const token = localStorage.getItem("token");
+      const userResponse = await getUserByToken(token);
+      setUser(userResponse.user);
+    };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const token = localStorage.getItem("token");
+    getUser();
+  }, [getUserByToken]);
 
-            if (!token) return;
+  return (
+    <section className="profile-view">
+      <div className="profile-backdrop" aria-hidden="true" />
 
-            const userData = await getUserByToken(token);
-            setUser(userData);
-        };
+      {user ? (
+        <article className="profile-card">
+          <p className="profile-kicker">Account</p>
+          <h2 className="profile-title">{user.username}</h2>
 
-        fetchUser();
-    }, []);
+          <dl className="profile-grid">
+            <div className="profile-row">
+              <dt>Email</dt>
+              <dd>{user.email}</dd>
+            </div>
 
-    if (!user) return <h1>No user logged in</h1>;
-
-    return (
-        <>
-            <h1>Profile</h1>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-        </>
-    );
+            <div className="profile-row">
+              <dt>Member since</dt>
+              <dd>{new Date(user.created_at).toLocaleString("fi-FI")}</dd>
+            </div>
+          </dl>
+        </article>
+      ) : (
+        <article className="profile-card profile-card-loading">
+          <p className="profile-kicker">Loading</p>
+          <h2 className="profile-title">Fetching profile&hellip;</h2>
+        </article>
+      )}
+    </section>
+  );
 };
-
 export default Profile;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import fetchData from "../utils/fetchData";
 
-// TODO: add necessary imports
+/* MEDIA */
 const useMedia = () => {
   const [mediaArray, setMediaArray] = useState([]);
 
@@ -43,66 +43,43 @@ const useMedia = () => {
   return { mediaArray };
 };
 
-// login
+/* LOGIN */
 const useAuthentication = () => {
   const postLogin = async (inputs) => {
     const fetchOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inputs),
     };
 
-    const loginResult = await fetchData(
+    return await fetchData(
       import.meta.env.VITE_AUTH_API + "/auth/login",
       fetchOptions,
     );
-
-    return loginResult;
   };
 
   return { postLogin };
 };
 
-// USER
+/* USER */
 const useUser = () => {
-  // REGISTER
   const postUser = async (inputs) => {
-    const response = await fetch(
-      "https://media2.edu.metropolia.fi/auth-api/api/v1/users",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputs),
-      },
-    );
-
-    const data = await response.json();
-    return data;
+    return await fetchData(import.meta.env.VITE_AUTH_API + "/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputs),
+    });
   };
 
-  // PROFILE TOKEN FETCH
   const getUserByToken = async (token) => {
-    const response = await fetch(
-      "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    return await fetchData(import.meta.env.VITE_AUTH_API + "/users/token", {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    );
-
-    const data = await response.json();
-    return data.user;
+    });
   };
 
-  return {
-    postUser,
-    getUserByToken,
-  };
+  return { postUser, getUserByToken };
 };
 
 export { useMedia, useAuthentication, useUser };

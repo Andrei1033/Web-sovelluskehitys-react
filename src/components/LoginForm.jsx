@@ -20,7 +20,7 @@ const LoginForm = () => {
     try {
       const result = await postLogin(inputs);
 
-      console.log("LOGIN RESULT", result);
+      //console.log("LOGIN RESULT", result);
 
       if (result.token) {
         localStorage.setItem("token", result.token);
