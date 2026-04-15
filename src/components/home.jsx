@@ -12,22 +12,33 @@ const Home = () => {
   );
 
   return (
-    <>
-      <h1>My app</h1>
-      <h2>My Media</h2>
+    <div className="home app-root">
+      <header>
+        <h1 className="site-title">My app</h1>
+        <h2 className="section-title">My Media</h2>
+      </header>
 
-      <input
-        type="text"
-        placeholder="Search media..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      ></input>
+      <div className="controls">
+        <input
+          className="search"
+          type="text"
+          placeholder="Search media..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-      <p>Clicks: {count}</p>
+        <div className="count-and-action">
+          <p className="muted">Clicks: {count}</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => setCount(count + 1)}
+          >
+            Click me
+          </button>
+        </div>
+      </div>
 
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-
-      <table>
+      <table className="media-table" aria-label="Media list">
         <thead>
           <tr>
             <th>Thumbnail</th>
@@ -47,7 +58,7 @@ const Home = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

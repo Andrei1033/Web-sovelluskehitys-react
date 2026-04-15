@@ -11,17 +11,20 @@ const Single = () => {
   }
 
   return (
-    <div>
-      <button onClick={() => navigate(-1)}>Go back</button>
+    <div className="single-page">
+      <button className="btn btn-ghost" onClick={() => navigate(-1)}>
+        Go back
+      </button>
 
       <h2>{item.title}</h2>
 
-      <img src={item.filename} alt={item.title} width="400" />
+      <img className="thumb" src={item.filename} alt={item.title} width="400" />
 
-      <p>Owner: {item.username}</p>
+      <p className="muted">Owner: {item.username}</p>
       <p>{item.description}</p>
-      <p>{item.media_type}</p>
-      <p>{item.filesize}</p>
+      <p className="muted">
+        {item.media_type} · {item.filesize}
+      </p>
     </div>
   );
 };

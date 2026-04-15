@@ -94,31 +94,34 @@ const RegisterForm = () => {
     <>
       <h1>Register</h1>
 
-      {registerError && <p style={{ color: "red" }}>{registerError}</p>}
+      {registerError && <p className="error-text">{registerError}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className="form-card" onSubmit={handleSubmit}>
+        <div className="form-row">
           <label>Username</label>
           <input
+            className="input"
             name="username"
             value={inputs.username}
             onChange={handleInputChange}
           />
-          <p>{usernameStatus}</p>
+          <p className="muted">{usernameStatus}</p>
         </div>
 
-        <div>
+        <div className="form-row">
           <label>Email</label>
           <input
+            className="input"
             name="email"
             value={inputs.email}
             onChange={handleInputChange}
           />
         </div>
 
-        <div>
+        <div className="form-row">
           <label>Password</label>
           <input
+            className="input"
             name="password"
             type="password"
             value={inputs.password}
@@ -126,7 +129,9 @@ const RegisterForm = () => {
           />
         </div>
 
-        <button type="submit">Register</button>
+        <button className="btn btn-primary" type="submit">
+          Register
+        </button>
       </form>
     </>
   );

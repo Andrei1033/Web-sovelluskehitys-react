@@ -7,11 +7,18 @@ const Login = () => {
 
   return (
     <>
-      <button onClick={() => setShowLogin(!showLogin)}>
-        {showLogin ? "Go to Register" : "Go to Login"}
-      </button>
+      <div className="login-toggle">
+        <button
+          className="btn btn-ghost"
+          onClick={() => setShowLogin(!showLogin)}
+        >
+          {showLogin ? "Go to Register" : "Go to Login"}
+        </button>
+      </div>
 
-      {showLogin ? <LoginForm /> : <RegisterForm />}
+      <section className="form-area">
+        {showLogin ? <LoginForm /> : <RegisterForm />}
+      </section>
     </>
   );
 };

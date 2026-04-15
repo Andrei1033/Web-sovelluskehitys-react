@@ -35,10 +35,11 @@ const LoginForm = () => {
     <>
       <h1>Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className="form-card" onSubmit={handleSubmit}>
+        <div className="form-row">
           <label htmlFor="loginuser">Username</label>
           <input
+            className="input"
             name="username"
             type="text"
             id="loginuser"
@@ -48,9 +49,10 @@ const LoginForm = () => {
           />
         </div>
 
-        <div>
+        <div className="form-row">
           <label htmlFor="loginpassword">Password</label>
           <input
+            className="input"
             name="password"
             type="password"
             id="loginpassword"
@@ -60,7 +62,9 @@ const LoginForm = () => {
           />
         </div>
 
-        <button type="submit">Login</button>
+        <button className="btn btn-primary" type="submit">
+          Login
+        </button>
       </form>
     </>
   );
