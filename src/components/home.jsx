@@ -1,52 +1,12 @@
 import MediaRow from "./MediaRow";
-import { useState, useEffect} from "react";
-import fetchData from '../utils/fetchData';
+import { useState } from "react";
+import { useMedia } from "../hooks/apiHooks";
 
 const Home = () => {
-    const [mediaArray, setMediaArray] = useState([]);
+    const { mediaArray } = useMedia();
     const [search, setSearch] = useState('');
     const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        const getMedia = async () => {
-            try {
-                const mediaItems = await fetchData(
-                import.meta.env.VITE_MEDIA_API + "/media"
-                );
-
-                const mediaWithUsers = await Promise.all(
-                mediaItems.map(async (item) => {
-                    try {
-                    const user = await fetchData(
-                        import.meta.env.VITE_AUTH_API +
-                        "/users/" +
-                        item.user_id
-                    );
-
-                    return {
-                        ...item,
-                        username: user.username,
-                    };
-                    } 
-                    catch {
-                    return {
-                        ...item,
-                        username: "unknown",
-                    };
-                    }
-                })
-                );
-                setMediaArray(mediaWithUsers);
-            } 
-            catch (error) {
-                console.error("fetchData error:", error);
-            }
-        };
-
-        getMedia();
-    }, []);
     
-
     const filteredMedia = mediaArray.filter((item) =>
         item.title.toLowerCase().includes(search.toLowerCase())
     );

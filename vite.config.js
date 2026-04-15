@@ -9,5 +9,5 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] })
     
   ],
-  base: '/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_hooks/',
+  base: '/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_custo-hooks/',
 })
