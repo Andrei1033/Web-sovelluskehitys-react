@@ -18,7 +18,12 @@ const Single = () => {
 
       <h2>{item.title}</h2>
 
-      <img className="thumb" src={item.filename} alt={item.title} width="400" />
+      <img
+        className="thumb main_view_img"
+        src={item.filename}
+        alt={item.title}
+        width="400"
+      />
 
       <p className="muted">Owner: {item.username}</p>
       <p>{item.description}</p>

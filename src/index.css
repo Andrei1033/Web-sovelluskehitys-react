@@ -324,6 +324,12 @@ h2 {
   cursor: not-allowed;
 }
 
+/* main image */
+.main_view_img {
+  width: 100%;
+  height: auto !important;
+}
+
 @media (max-width: 720px) {
   .nav-list {
     flex-wrap: wrap;
