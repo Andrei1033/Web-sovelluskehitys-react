@@ -5,5 +5,5 @@ import babel from "@rolldown/plugin-babel";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
-  base: "/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_context/",
+  base: "/~andreits/Web-sovelluskehitys-TX00EY23-3012/react_upload/",
 });

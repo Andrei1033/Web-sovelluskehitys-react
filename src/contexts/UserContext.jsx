@@ -20,7 +20,10 @@ const UserProvider = ({ children }) => {
 
       const userResult = await getUserByToken(loginResult.token);
 
-      setUser(userResult.user);
+      setUser({
+        ...userResult.user,
+        token: loginResult.token,
+      });
 
       navigate("/");
     } catch (e) {
@@ -45,7 +48,10 @@ const UserProvider = ({ children }) => {
 
       if (token) {
         const userResult = await getUserByToken(token);
-        setUser(userResult.user);
+        setUser({
+          ...userResult.user,
+          token,
+        });
 
         navigate(location.pathname);
       }
