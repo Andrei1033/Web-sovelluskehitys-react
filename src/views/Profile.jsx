@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import { useUser } from "../hooks/apiHooks";
+import { useUserContext } from "../hooks/contextHooks";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
-  const { getUserByToken } = useUser();
+  const { user } = useUserContext();
 
-  useEffect(() => {
-    const getUser = async () => {
-      const token = localStorage.getItem("token");
-      const userResponse = await getUserByToken(token);
-      setUser(userResponse.user);
-    };
-
-    getUser();
-  }, [getUserByToken]);
+  // jos käyttäjää ei ole
+  if (!user) {
+    return (
+      <section className="profile-view">
+        <article className="profile-card profile-card-loading">
+          <p className="profile-kicker">Not logged in</p>
+          <h2 className="profile-title">Please login first</h2>
+        </article>
+      </section>
+    );
+  }
 
   return (
     <section className="profile-view">

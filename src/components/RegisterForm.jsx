@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import useForm from "../hooks/formHooks";
-import { useUser, useAuthentication } from "../hooks/apiHooks";
+import { useUser } from "../hooks/apiHooks";
 import fetchData from "../utils/fetchData";
-import { useNavigate } from "react-router";
+import { useUserContext } from "../hooks/contextHooks";
 
 const RegisterForm = () => {
   const { postUser } = useUser();
-  const { postLogin } = useAuthentication();
-  const navigate = useNavigate();
+  const { handleLogin } = useUserContext();
   const [usernameStatus, setUsernameStatus] = useState("");
   const [registerError, setRegisterError] = useState("");
 
@@ -32,26 +31,15 @@ const RegisterForm = () => {
         email: inputs.email,
       };
 
-      // 1. Rekisteröidy
-      const registerResult = await postUser(userData);
-      //console.log("REGISTER RESULT:", registerResult);
+      await postUser(userData);
 
-      if (registerResult) {
-        // 2. Kirjaudu automaattisesti sisään
-        const loginResult = await postLogin({
-          username: inputs.username,
-          password: inputs.password,
-        });
-
-        //console.log("AUTO LOGIN RESULT:", loginResult);
-
-        if (loginResult.token) {
-          localStorage.setItem("token", loginResult.token);
-          navigate("/"); // Ohjaa etusivulle
-        }
-      }
+      // 🔥 Context hoitaa loginin
+      await handleLogin({
+        username: inputs.username,
+        password: inputs.password,
+      });
     } catch (err) {
-      console.error("Register or auto-login failed:", err);
+      console.error(err);
       setRegisterError(
         "Rekisteröinti tai automaattinen kirjautuminen epäonnistui",
       );
