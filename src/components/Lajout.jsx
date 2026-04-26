@@ -11,30 +11,40 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="app-root">
-      <nav className="site-nav">
-        <ul className="nav-list">
+    <div className="max-w-6xl mx-auto">
+      <nav className="mb-5 rounded-xl p-3 bg-gradient-to-r from-orange-500/10 to-transparent shadow-inner">
+        <ul className="flex gap-3 items-center *:text-yellow-300">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-white transition">
+              Home
+            </Link>
           </li>
 
           {user && (
             <>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile" className="px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-white">
+                  Profile
+                </Link>
               </li>
               <li>
-                <Link to="/upload">Upload</Link>
+                <Link to="/upload" className="px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-white">
+                  Upload
+                </Link>
               </li>
               <li>
-                <Link to="/logout">Logout</Link>
+                <Link to="/logout" className="px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-white">
+                  Logout
+                </Link>
               </li>
             </>
           )}
 
           {!user && (
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" className="px-3 py-2 rounded-lg hover:bg-orange-500/10 hover:text-white">
+                Login
+              </Link>
             </li>
           )}
         </ul>

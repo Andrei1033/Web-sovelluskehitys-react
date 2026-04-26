@@ -1,0 +1,342 @@
+:root {
+  --bg: #0b0b0b;
+  --surface: #5b1f03;
+  --accent-1: #ff6b35; /* orange */
+  --accent-2: #ff3d00; /* red */
+  --accent-3: #ffd166; /* yellow */
+  --muted: #c9c0b9;
+  --glass: rgba(255, 255, 255, 0.03);
+  --radius: 12px;
+  --container-pad: 20px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      1200px 600px at 10% 10%,
+      rgba(255, 72, 0, 0.481),
+      transparent
+    ),
+    linear-gradient(180deg, #150a08 0%, #620000 100%);
+  color: var(--muted);
+  font-family:
+    Montserrat,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: var(--container-pad);
+}
+
+/* App container */
+.app-root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation */
+.site-nav {
+  background: linear-gradient(90deg, rgba(255, 77, 0, 0.06), transparent);
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  box-shadow: 0 6px 24px rgba(255, 61, 0, 0.06) inset;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.nav-list a {
+  color: var(--accent-3);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.nav-list a:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 107, 53, 0.12),
+    rgba(255, 61, 0, 0.06)
+  );
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  color: var(--accent-3);
+  margin: 8px 0;
+}
+h1 {
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+}
+h2 {
+  font-size: 1.2rem;
+}
+
+/* Home */
+.home {
+  background: linear-gradient(180deg, rgba(255, 61, 0, 0.02), transparent);
+  padding: 18px;
+  border-radius: var(--radius);
+}
+.home .search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  color: var(--muted);
+  outline: none;
+  box-shadow: 0 6px 18px rgba(255, 61, 0, 0.02) inset;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #120300;
+  box-shadow: 0 10px 30px rgba(255, 61, 0, 0.18);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--accent-3);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-view {
+  background: linear-gradient(90deg, var(--accent-3), var(--accent-1));
+  color: #140700;
+}
+
+/* Forms */
+.form-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.form-row label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.form-row input,
+.form-row textarea,
+.form-row select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  color: var(--muted);
+  outline: none;
+}
+
+.error-text {
+  color: #ff8b8b;
+  font-weight: 600;
+}
+
+/* Tables & media rows */
+.media-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: transparent;
+}
+.media-table thead th {
+  color: var(--accent-3);
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.media-table tbody td {
+  padding: 10px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.02);
+  vertical-align: middle;
+}
+.thumb {
+  width: 84px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 6px 20px rgba(255, 61, 0, 0.04);
+}
+
+/* Dialog / Single view */
+.single-dialog {
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 15, 10, 0.9),
+    rgba(20, 8, 6, 0.95)
+  );
+  border: 1px solid rgba(255, 61, 0, 0.08);
+  color: var(--muted);
+}
+.single-dialog img,
+.single-dialog video {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Profile tweaks (kept from existing) */
+.profile-view {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+.profile-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 61, 0, 0.02)
+  );
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 61, 0, 0.04);
+  color: var(--muted);
+  max-width: 520px;
+}
+
+/* Utility */
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+.gap-sm {
+  gap: 8px;
+}
+
+/* ============================= */
+/* Upload page */
+/* ============================= */
+
+.upload-title {
+  margin-bottom: 14px;
+}
+
+.upload-form {
+  max-width: auto;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 61, 0, 0.03)
+  );
+  border: 1px solid rgba(255, 61, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.upload-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upload-row label {
+  font-size: 0.9rem;
+  color: var(--accent-3);
+}
+
+.upload-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--glass);
+  color: var(--muted);
+  outline: none;
+  transition: 0.2s;
+}
+
+.upload-input:focus {
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.4);
+}
+
+.upload-file {
+  color: var(--muted);
+}
+
+.upload-preview {
+  width: 100%;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 25px rgba(255, 61, 0, 0.15);
+}
+
+.upload-button {
+  align-self: flex-start;
+}
+
+.upload-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* main image */
+.main_view_img {
+  width: 100%;
+  height: auto !important;
+}
+
+@media (max-width: 720px) {
+  .nav-list {
+    flex-wrap: wrap;
+  }
+  .thumb {
+    width: 64px;
+    height: 48px;
+  }
+}
+/* App.css - Main styling for the media gallery */
